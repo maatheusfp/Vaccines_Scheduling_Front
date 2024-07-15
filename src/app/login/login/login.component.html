@@ -1,0 +1,18 @@
+<div class="box-login">
+    <div class="box-login-form">
+        <form #login="ngForm" (ngSubmit)="doLogin(login)" class="box-form">
+
+            <div class="form-floating">
+                <input type="text" placeholder="Login" name="login" id="inputLogin" [(ngModel)]="formLogin.login" required/>
+                <label for="inputLogin">Login</label>
+            </div>
+
+            <div class="form-floating">
+                <input type="password" placeholder="***********" name="password" [(ngModel)]="formLogin.password" required>
+                <label for="inputPassword">Password</label>
+            </div>
+            
+            <button type="submit" >Login</button>
+        </form>
+    </div>    
+</div>

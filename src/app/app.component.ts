@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+// import { LoginService } from './services/login/login.service';
 
 @Component({
   selector: 'app-root',
@@ -9,5 +10,6 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'Vaccines_Scheduling_Front';
+  // loginService = inject(LoginService);
+  // isLogged = this.loginService.isLogged$;
 }
