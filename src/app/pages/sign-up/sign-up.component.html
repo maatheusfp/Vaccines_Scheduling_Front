@@ -1,1 +1,29 @@
-<p>sign-up works!</p>
+<div class="box-form">
+    <div class="box-login-form">
+        <form #signUp="ngForm" (ngSubmit)="doSignUp(signUp)" class="box-form">
+
+            <div class="form-floating">
+                <input type="Name" placeholder="Name" name="Name" id="inputName" [(ngModel)]="formSignUp.name" required/>
+                <label for="inputName">Name</label>
+            </div>
+
+            <div class="form-floating">
+                <input type="login" placeholder="Login" name="login" id="inputLogin" [(ngModel)]="formSignUp.login" required/>
+                <label for="inputLogin">Login</label>
+            </div>
+
+            <div class="form-floating">
+                <input type="Birthday" placeholder="Birthday" name="Birthday" id="inputBirthday" [(ngModel)]="formSignUp.birthday" required/>
+                <label for="inputBirthday">Birthday</label>
+            </div>
+
+            <div class="form-floating">
+                <input type="password" placeholder="***********" name="password" [(ngModel)]="formSignUp.password" required>
+                <label for="inputPassword">Password</label>
+            </div>
+            
+            <button type="submit" >SignUp</button>
+        </form>
+    </div>
+</div>
+    
