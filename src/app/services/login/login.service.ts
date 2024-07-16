@@ -1,7 +1,7 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable, inject } from "@angular/core";
 import { Router } from "@angular/router";
-import { BehaviorSubject, tap } from "rxjs";
+import { BehaviorSubject, tap, catchError, throwError } from "rxjs";
 import { Login, UserToken} from "../../types/login";
 
 @Injectable({
@@ -21,21 +21,28 @@ export class LoginService {
     }
 
     login(login: Login) {
-        const patientBody = {...login};
+        const patientBody = { ...login };
         return this._http.post<UserToken>(`${this.apiUrl}/Authentication/Login`, patientBody).pipe(
-            tap((userToken) => {
-                localStorage.setItem('token', userToken.token);
-                this.isLogged.next(true);
-            })
+          tap((response: any) => {
+            // Check if the response body contains HttpStatus = 500
+            if (response.HttpStatus === 500) {
+              // Handle the error, e.g., by throwing an error or logging
+              throw new Error();
+            } else {
+              // Proceed with setting the token and updating the logged-in status
+              localStorage.setItem('token', response.token);
+              this.isLogged.next(true);
+            }
+          }),
+          catchError(this.handleError)
         );
-    }
+      }
 
     logout() {
         localStorage.removeItem('token');
         this.isLogged.next(false);
         this.router.navigate(['login']);
-    }
-    
+    }    
     getToken() {
     return localStorage.getItem('token');
     }
@@ -49,4 +56,9 @@ export class LoginService {
         this.isLogged.next(false);
     }
     }
+
+    private handleError(error: HttpErrorResponse) {
+        console.error('An error occurred:', error);
+        return throwError(() => new Error('Something bad happened; please try again later.'));
+      }
 }

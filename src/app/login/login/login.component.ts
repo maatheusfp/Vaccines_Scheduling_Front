@@ -21,11 +21,16 @@ export class LoginComponent {
   };
 
   doLogin(form: NgForm) {
-    if (form.valid) {  
-      this.loginService.login(this.formLogin).subscribe((user) => {
-        this.router.navigate(['']);
+    if (form.valid) {
+      this.loginService.login(this.formLogin).subscribe({
+        next: (user) => {
+          this.router.navigate(['']);
+        },
+        error: (err) => {
+          alert('Login failed, please check your credentials and try again.');
+        }
       });
-  }
+    }
   }
 }
 
