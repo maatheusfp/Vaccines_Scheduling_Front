@@ -24,10 +24,10 @@ export class LoginComponent {
     if (form.valid) {
       this.loginService.login(this.formLogin).subscribe({
         next: (user) => {
-          this.router.navigate(['']);
+          this.router.navigate(['/central']);
         },
         error: (err) => {
-          alert('Login failed, please check your credentials and try again.');
+          alert(`${err.message}`);
         }
       });
     }
