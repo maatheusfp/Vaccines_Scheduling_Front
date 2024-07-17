@@ -27,7 +27,7 @@ export class LoginComponent {
           this.router.navigate(['']);
         },
         error: (err) => {
-          alert('Login failed, please check your credentials and try again.');
+          alert(`${err.message}`);
         }
       });
     }

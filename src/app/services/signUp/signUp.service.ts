@@ -17,21 +17,14 @@ export class SignUpService {
     signUp(signUp: SignUp) {
         const signUpBody = { ...signUp };
         return this._http.post<SignUpResponse>(`${this.apiUrl}/PatientSignUp/SignUp`, signUpBody).pipe(
-          tap((response: any) => {
-            // Check if the response body contains HttpStatus = 500
-            if (response.HttpStatus === 500) {
-              // Handle the error, e.g., by throwing an error or logging
-              throw new Error();
-            } else {
-              // responder com modal confirmando o cadastro
-            }
+          tap((response: SignUpResponse) => {
+              alert(`Account created! Welcome ${response.name}!`);
           }),
           catchError(this.handleError)
         );
       }
     
     private handleError(error: HttpErrorResponse) {
-        console.error('An error occurred:', error);
         return throwError(() => new Error('Something bad happened; please try again later.'));
     }
 }

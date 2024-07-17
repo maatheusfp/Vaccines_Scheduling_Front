@@ -1,3 +1,5 @@
+import { Errors } from './errors';
+
 export type SignUp = {
     name: string,
     login: string,
@@ -6,5 +8,8 @@ export type SignUp = {
 };
 
 export type SignUpResponse = {
-    HttpStatus: number,
-}
+    name?: string,
+    login?: string,
+    errors?: Errors
+};
+
