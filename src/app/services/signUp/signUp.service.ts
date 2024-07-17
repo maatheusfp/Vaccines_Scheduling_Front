@@ -18,7 +18,7 @@ export class SignUpService {
         const signUpBody = { ...signUp };
         return this._http.post<SignUpResponse>(`${this.apiUrl}/PatientSignUp/SignUp`, signUpBody).pipe(
           tap((response: SignUpResponse) => {
-              alert(`Account created! Welcome ${response.name}!`);
+              alert(`Account created!`);
           }),
           catchError(this.handleError)
         );
