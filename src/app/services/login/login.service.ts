@@ -23,19 +23,10 @@ export class LoginService {
     login(login: Login) {
         const patientBody = { ...login };
         return this._http.post<UserToken>(`${this.apiUrl}/Authentication/Login`, patientBody).pipe(
-          tap((response: LoginResponse) => {
-            if (response.HttpStatus === 500) {
-              this.isLogged.next(false);
-              throw new Error('Invalid Credentials');
-            } 
-            else {
-              if (response.token !== undefined) {
-                localStorage.setItem('token', response.token);
-              }
-              this.isLogged.next(true);
-            }
-          }),
-          catchError(this.handleError)
+          tap((userToken: UserToken) => {
+            localStorage.setItem('token', userToken.token);
+            this.isLogged.next(true);
+          })
         );
       }
 
@@ -57,8 +48,4 @@ export class LoginService {
         this.isLogged.next(false);
     }
     }
-
-    private handleError(error: HttpErrorResponse) {
-        return throwError(() => new Error(`${error.message}`));
-      }
 }
