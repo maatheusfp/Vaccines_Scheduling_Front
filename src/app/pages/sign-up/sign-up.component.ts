@@ -27,9 +27,6 @@ export class SignUpComponent {
       this.signUpService.signUp(this.formSignUp).subscribe({
         next: (user) => {
           this.router.navigate(['']);
-        },
-        error: (err) => {
-          alert('Sign up failed, please check your credentials and try again.');
         }
       });
     }

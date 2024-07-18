@@ -5,6 +5,7 @@ import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { authenticateGuard } from './guard/authenticate.guard';
 import { CentralComponent } from './pages/central/central.component';
 import { loginGuard } from './guard/login.guard';
+import { GetAppointmentsComponent } from './pages/get-appointments/get-appointments.component';
 
 export const routes: Routes = [{
     path: 'login',
@@ -23,6 +24,11 @@ export const routes: Routes = [{
     path: 'central',
     component: CentralComponent,
     canActivate: [authenticateGuard],
+},
+{
+    path: 'get-appointments',
+    component: GetAppointmentsComponent,
+    canActivate: [authenticateGuard]
 },
 {
     path: '',

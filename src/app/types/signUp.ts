@@ -10,6 +10,5 @@ export type SignUp = {
 export type SignUpResponse = {
     name?: string,
     login?: string,
-    errors?: Errors
 };
 

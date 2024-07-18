@@ -25,9 +25,6 @@ export class LoginComponent {
       this.loginService.login(this.formLogin).subscribe({
         next: (user) => {
           this.router.navigate(['/central']);
-        },
-        error: (err) => {
-          alert(`${err.message}`);
         }
       });
     }

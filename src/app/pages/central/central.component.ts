@@ -17,4 +17,8 @@ export class CentralComponent {
     this.loginService.logout();
     this.router.navigate(['']);
   }
+
+  goGetAppointments(){
+    this.router.navigate(['get-appointments']);
+  }
 }
