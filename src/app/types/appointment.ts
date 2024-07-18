@@ -1,6 +1,8 @@
-export type Appointment = {
+export type AppointmentDTO = {
     id: number,
-    name: string,
     date: string,
-    time: string
+    time: string,
+    status: string,
 };
+
+export type AppointmentsReturn = AppointmentDTO[];
