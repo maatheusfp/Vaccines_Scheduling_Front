@@ -65,12 +65,24 @@ export const httpInterceptor: HttpInterceptorFn = (req, next) => {
     }),
     catchError((error) => {
       if ('HttpStatus' in error) {
+        if (error.messages == 'Patient does not exist') {
+          tokenService.logout();
+        }
+        if (error.messages == 'Deleted Sucessfull') {
+          tokenService.logout();
+        }
         notification.showNotification(error.Messages);
       }
-      else if ('status' in error && 'errors' in error)  {
-        const messages = Object.values(error.type.errors).flat().join('\n');
+      else if (error.error)  {
+        const messages = Object.values(error.error.errors).flat().join('\n');
+        if (messages == 'Deleted Sucessfull') {
+          tokenService.logout();
+        }
+        if (messages == 'Patient does not exist') {
+          tokenService.logout();
+        }
         notification.showNotification(messages);
-      }
+      }    
       else if (error.status === 401) {
         tokenService.logout();
       }  
