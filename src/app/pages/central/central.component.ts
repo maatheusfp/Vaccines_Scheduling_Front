@@ -1,17 +1,37 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { LoginService } from '../../services/login/login.service';
 import { Router } from '@angular/router';
+import { AppointmentService } from '../../services/appointment/appointment.service';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { AppointmentsReturn } from '../../types/appointment';
+import { MatBadgeModule } from '@angular/material/badge';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-central',
   standalone: true,
-  imports: [],
+  imports: [ MatBadgeModule, AsyncPipe],
   templateUrl: './central.component.html',
   styleUrl: './central.component.scss'
 })
-export class CentralComponent {
+export class CentralComponent implements OnInit {
   private loginService = inject(LoginService);
   private router = inject(Router);
+  private appointmentService = inject(AppointmentService);
+  private appointmentsSubject = new BehaviorSubject<AppointmentsReturn | null>(null);
+  getAppointments$: Observable<AppointmentsReturn | null> = this.appointmentsSubject.asObservable();
+
+  ngOnInit(): void {
+    this.getYourAppointments();
+  }
+
+  getYourAppointments(){
+    this.appointmentService.getYourAppointments().subscribe({
+      next: (appointments) => {
+        this.appointmentsSubject.next(appointments);
+      }
+    });
+  }
 
   doLogout(){
     this.loginService.logout();
