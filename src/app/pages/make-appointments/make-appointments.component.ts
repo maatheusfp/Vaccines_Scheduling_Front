@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { inject } from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -17,7 +17,7 @@ import { NotificationService } from '../../services/notification/notification.se
   templateUrl: './make-appointments.component.html',
   styleUrl: './make-appointments.component.scss'
 })
-export class MakeAppointmentsComponent {
+export class MakeAppointmentsComponent implements OnInit{
   private appointmentService = inject(AppointmentService);
   private router = inject(Router);
   private notificationService = inject(NotificationService);
@@ -29,10 +29,26 @@ export class MakeAppointmentsComponent {
     time: ''
   };
 
+  ngOnInit(): void {
+    this.loadFormData();
+  }
+
+  loadFormData() {
+    const savedData = localStorage.getItem('makeAppointmentForm');
+    if (savedData) {
+      this.formMakeAppointment = JSON.parse(savedData);
+    }
+  }
+
+  saveFormData() {
+    localStorage.setItem('makeAppointmentForm', JSON.stringify(this.formMakeAppointment));
+  }
+
   makeAppointment(form: NgForm){
     this.notificationService.hideNotification();
     if(form.valid){
       this.appointmentService.makeAppointment(this.formMakeAppointment).subscribe(() =>{
+        localStorage.removeItem('makeAppointmentForm');
         this.notificationService.showNotification('Appointment made successfully');
       });
     }

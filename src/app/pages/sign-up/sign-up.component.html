@@ -3,22 +3,22 @@
         <form #signUp="ngForm" (ngSubmit)="doSignUp(signUp)" class="box-form">
 
             <div class="form-floating">
-                <input type="Name" placeholder="Name" name="Name" id="inputName" [(ngModel)]="formSignUp.name" required/>
+                <input type="Name" placeholder="Name" name="Name" id="inputName" [(ngModel)]="formSignUp.name" (ngModelChange)="saveFormData()" required/>
                 <label for="inputName">Name</label>
             </div>
 
             <div class="form-floating">
-                <input type="login" placeholder="Login" name="login" id="inputLogin" [(ngModel)]="formSignUp.login" required/>
+                <input type="login" placeholder="Login" name="login" id="inputLogin" [(ngModel)]="formSignUp.login" (ngModelChange)="saveFormData()" required/>
                 <label for="inputLogin">Login</label>
             </div>
 
             <div class="form-floating">
-                <input type="Birthday" placeholder="Birthday" name="Birthday" id="inputBirthday" [(ngModel)]="formSignUp.birthday" required/>
+                <input type="Birthday" placeholder="Birthday" name="Birthday" id="inputBirthday" [(ngModel)]="formSignUp.birthday" (ngModelChange)="saveFormData()" required/>
                 <label for="inputBirthday">Birthday</label>
             </div>
 
             <div class="form-floating">
-                <input type="password" placeholder="***********" name="password" [(ngModel)]="formSignUp.password" required>
+                <input type="password" placeholder="***********" name="password" [(ngModel)]="formSignUp.password" (ngModelChange)="saveFormData()" required>
                 <label for="inputPassword">Password</label>
             </div>
             
