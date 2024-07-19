@@ -21,4 +21,8 @@ export class CentralComponent {
   goGetAppointments(){
     this.router.navigate(['get-appointments']);
   }
+
+  goMakeAppointment(){
+    this.router.navigate(['make-appointment']);
+  } 
 }

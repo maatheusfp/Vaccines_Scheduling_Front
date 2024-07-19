@@ -27,6 +27,10 @@ export class GetAppointmentsComponent implements OnInit{
     this.getYourAppointments();
   }
 
+  goMakeAppointment(){
+    this.router.navigate(['make-appointment']);
+  }
+
   getYourAppointments() {
     this.appointmentService.getYourAppointments().subscribe({
       next: (appointments) => {
