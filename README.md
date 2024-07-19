@@ -1,27 +1,14 @@
-# VaccinesSchedulingFront
+# Vaccines Scheduling Front
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.8.
+## Como rodar
+1. Primeiramente clone o repositorio na pasta de sua preferência. Recomendo clonar em uma pasta que não possua outro repositório para evitar conflitos.
+2. Após clonado, dentro da pasta .\Vaccines_Scheduling_Front\ rode o comando `npm install` 
+3. Por fim, para rodar a aplicação: `ng serve`. Por padrão, estará rodando no localhost:4200. Caso o navegador não abra diretamente, basta colocar o link.  
+**Obs**: Para que as funcionalidades que necessitam de banco de dados funcionem, é necessário estar com esse repositório rodando: https://github.com/maatheusfp/Vaccines_Scheduling_Back
 
-## Development server
+## Possíveis Problemas
+Infelizmente o Angular Material pode encontrar problemas com as configurações dos navegadores. O problema que encontrei foi quando havia importação de algum módulo do material, que ao entrar na página desse módulo a aplicação crashava sem apresentar nenhum log de erro. Aparentemente é um problema relativamente regular, que algumas pessoas já tentaram fornecer diferentes soluções. Durante o desenvolvimento do projeto me deparei duas vezes com esse problema, mas que magicamente voltou a normalidade após desinstalar e instalar novamente as dependências. 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Seguem os links das discussões caso isso ocorra: 
+https://github.com/angular/components/issues/28585
+https://github.com/angular/components/issues/28905
