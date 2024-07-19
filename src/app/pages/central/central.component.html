@@ -1,0 +1,17 @@
+<div class="header">
+    <div class="actions">
+      <button class="delete-account" (click)="deletePatient()">Delete Account</button>
+      <button class="logout" (click)="doLogout()">Logout</button>
+    </div>
+</div>
+  
+<div class="content">
+    <button class="main-button" (click)="goMakeAppointment()">Make Appointment</button>
+    <button mat-raised-button 
+      class="main-button"
+      matBadge="{{ (getAppointments$ | async)?.length }}"
+      matBadgePosition="above after"
+      matBadgeColor="primary" 
+      (click)="goGetAppointments()">See Your Appointments</button>
+</div>
+  

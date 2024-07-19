@@ -1,0 +1,67 @@
+<div class="box-cadastro-form">
+    <div class="box-card">
+      <h2 class="box-card-title">Sign Up</h2>
+      <div class="box-signup-form">
+        <form #signUp="ngForm" (ngSubmit)="doSignUp(signUp)" class="box-form">
+          <div class="form-group">
+            <label for="inputName">Name</label>
+            <input
+              type="text"
+              placeholder="Name"
+              name="name"
+              id="inputName"
+              [(ngModel)]="formSignUp.name"
+              (ngModelChange)="saveFormData()"
+              class="form-control"
+              required
+            />
+          </div>
+  
+          <div class="form-group">
+            <label for="inputLogin">Login</label>
+            <input
+              type="text"
+              placeholder="Login"
+              name="login"
+              id="inputLogin"
+              [(ngModel)]="formSignUp.login"
+              (ngModelChange)="saveFormData()"
+              class="form-control"
+              required
+            />
+          </div>
+  
+          <div class="form-group">
+            <label for="inputBirthday">Birthday</label>
+            <input
+              type="date"
+              placeholder="Birthday"
+              name="birthday"
+              id="inputBirthday"
+              [(ngModel)]="formSignUp.birthday"
+              (ngModelChange)="saveFormData()"
+              class="form-control"
+              required
+            />
+          </div>
+  
+          <div class="form-group">
+            <label for="inputPassword">Password</label>
+            <input
+              type="password"
+              placeholder="***********"
+              name="password"
+              id="inputPassword"
+              [(ngModel)]="formSignUp.password"
+              (ngModelChange)="saveFormData()"
+              class="form-control"
+              required
+            />
+          </div>
+          
+          <button type="submit" class="btn btn-primary submit-button">Sign Up</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  

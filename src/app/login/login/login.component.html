@@ -1,0 +1,38 @@
+<div class="box-cadastro-form">
+    <div class="box-card">
+      <h2 class="box-card-title">Login</h2>
+      <div class="box-login-form">
+        <form #login="ngForm" (ngSubmit)="doLogin(login)" class="box-form">
+          <div class="form-group">
+            <label for="inputLogin">Login</label>
+            <input
+              type="text"
+              placeholder="Login"
+              name="login"
+              id="inputLogin"
+              [(ngModel)]="formLogin.login"
+              (ngModelChange)="saveFormData()"
+              class="form-control"
+              required
+            />
+          </div>
+  
+          <div class="form-group">
+            <label for="inputPassword">Password</label>
+            <input
+              type="password"
+              placeholder="***********"
+              name="password"
+              [(ngModel)]="formLogin.password"
+              (ngModelChange)="saveFormData()"
+              class="form-control"
+              required
+            />
+          </div>
+          
+          <button type="submit" class="btn btn-primary submit-button">Login</button>
+        </form>
+      </div>
+    </div>    
+</div>
+  
