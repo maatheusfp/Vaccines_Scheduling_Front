@@ -1,4 +1,17 @@
-<div style="display: flex; justify-content: center;">
-    <button style="margin-right: 10px;" (click)="goSignUp()" >SignUp</button>
-    <button (click)="goLogin()">Login</button>
+<div class="box-cadastro-form">
+    <div class="box-card">
+
+      <div class="logo">
+        <img src="assets/logo.png" alt="Logo" />
+      </div>
+
+      <p class="title-text">Vaccines Scheduling</p>
+
+      <div class="buttons-container">
+        <button mat-raised-button class="btn-primary" (click)="goLogin()">Login</button>
+        <button mat-raised-button class="btn-primary" (click)="goSignUp()">Sign Up</button>
+      </div>
+      
+    </div>
 </div>
+  

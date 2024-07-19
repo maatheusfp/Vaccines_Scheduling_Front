@@ -1,6 +1,6 @@
 <div class="header">
     <div class="actions">
-      <button class="delete-account">Delete Account</button>
+      <button class="delete-account" (click)="deletePatient()">Delete Account</button>
       <button class="logout" (click)="doLogout()">Logout</button>
     </div>
 </div>
@@ -11,7 +11,7 @@
       class="main-button"
       matBadge="{{ (getAppointments$ | async)?.length }}"
       matBadgePosition="above after"
-      matBadgeColor="accent" 
+      matBadgeColor="primary" 
       (click)="goGetAppointments()">See Your Appointments</button>
 </div>
   
