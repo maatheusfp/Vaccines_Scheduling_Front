@@ -1,0 +1,41 @@
+<div class="box-cadastro-form">
+    <div class="header-buttons">
+      <button type="button" class="btn btn-primary back-button" (click)="goBack()">Back</button>
+      <button type="button" class="btn btn-primary see-appointments-button" (click)="seeAppointments()">See Your Appointments</button>
+    </div>
+  
+    <div class="box-card">
+      <h2 class="box-card-title">Make an Appointment</h2>
+      <div class="box-form">
+        <form #appointmentForm="ngForm" (ngSubmit)="makeAppointment(appointmentForm)" class="box-form">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input id="name" name="name" [(ngModel)]="formMakeAppointment.patientName" type="text" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="birthDate">Date of Birth</label>
+            <mat-form-field appearance="fill">
+              <mat-label>Date of Birth</mat-label>
+              <input matInput [matDatepicker]="birthDatePicker" name="birthDate" [(ngModel)]="formMakeAppointment.birthday" required>
+              <mat-datepicker-toggle matSuffix [for]="birthDatePicker"></mat-datepicker-toggle>
+              <mat-datepicker #birthDatePicker></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div class="form-group">
+            <label for="appointmentDate">Appointment Date</label>
+            <mat-form-field appearance="fill">
+              <mat-label>Appointment Date</mat-label>
+              <input matInput [matDatepicker]="appointmentDatePicker" name="appointmentDate" [(ngModel)]="formMakeAppointment.date" required>
+              <mat-datepicker-toggle matSuffix [for]="appointmentDatePicker"></mat-datepicker-toggle>
+              <mat-datepicker #appointmentDatePicker></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div class="form-group">
+            <label for="appointmentTime">Appointment Time</label>
+            <input id="appointmentTime" name="appointmentTime" [(ngModel)]="formMakeAppointment.time" type="time" class="form-control" required>
+          </div>
+          <button type="submit" class="btn btn-primary submit-button" [disabled]="appointmentForm.invalid">Make Appointment</button>
+        </form>
+      </div>
+    </div>
+  </div>
