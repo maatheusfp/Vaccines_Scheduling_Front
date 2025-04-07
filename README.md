@@ -1,4 +1,10 @@
 # Vaccines Scheduling Front
+### Web App para agendamento de Vacinação feito em Angular
+## O que você vai encontrar:
+1. Guards das rotas para não serem acessadas sem o token de autorização;
+2. Interceptor para tratar erros de requisição;
+3. Services para realizar chamadas ao back;
+4. Separação por páginas e componentes. 
 
 ## Como rodar
 1. Primeiramente clone o repositorio na pasta de sua preferência. Recomendo clonar em uma pasta que não possua outro repositório para evitar conflitos.
@@ -12,3 +18,5 @@ Infelizmente o Angular Material pode encontrar problemas com as configurações 
 Seguem os links das discussões caso isso ocorra: 
 https://github.com/angular/components/issues/28585
 https://github.com/angular/components/issues/28905
+
+**OBS:** Esse é o meu primeiro projeto em Angular, então é bem provável que haja diversas possibilidades de melhorias. Fique à vontade para dar feedbacks! 
